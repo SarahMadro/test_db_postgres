@@ -16,9 +16,11 @@ const knex = require('knex')({
   knex.from('famous_people').select('*').where('first_name', command).orWhere('last_name', command)
     .then((result) => {
       console.log('result:', result);
+
+      knex.destroy();
+
     }).catch((err) => {
       console.log('error:', err);
-      knex.destroy();
     });
 
 
